@@ -140,6 +140,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "midia_post"),
  )
 
+# Configure Django App for Heroku.
+import django_heroku
+
 try:
     django_heroku.settings(locals())
 except:
