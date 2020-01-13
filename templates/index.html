@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Home{% endblock %}
+
+    {% block conteudo %}
+    <!-- Page Content
+    ================================================== -->
+    <div class="col-md-12">
+        <div id="content" class="panel-container">
+
+
+            <!-- Home Page
+            ================================================== -->
+            <div id="home">
+                <!-- Text Section -->
+                <div class="row">
+                    <section class="about-me line col-md-12 padding_30 padbot_45">
+                    <div class="section-title"><span></span><h2>APRESENTAÇÃO</h2></div>
+                    {% for i in pessoa %}
+                        <p style="text-indent: 40px;" class="top_30">{{ i.apresentacao }}</p>
+                    {% endfor %}
+                </section>
+                </div>
+                <!-- Skills Section -->
+                <div class="row">
+                    <section class="design-skills col-md-6 padding_60 padbot_50">
+                        <!--<div class="section-title bottom_45"><span></span><h2>Tecnologias</h2></div>
+                        <ul class="skill-list">
+                            <li>
+                                <h3>Photoshop</h3>
+                                <div class="progress">
+                                    <div class="percentage" style="width:80%;"></div>
+                                </div>
+                            </li>
+                        </ul>-->
+                    </section>
+                    <section class="code-skills col-md-6 padding_60">
+                        <!--<div class="section-title bottom_45"><span></span><h2>Outros</h2></div>
+                        <ul class="skill-list">
+                            <li>
+                                <h3>Javascript</h3>
+                                <div class="progress">
+                                    <div class="percentage" style="width:80%;"></div>
+                                </div>
+                            </li>
+                        </ul>-->
+                    </section>
+                </div>
+            </div>
+
+            <!-- Resume Page
+            ================================================== -->
+            <div id="resume">
+                <!-- Resume Section -->
+                <div class="row">
+                    <section class="education">
+                    <div class="section-title top_30"><span></span><h2>RESUMO</h2></div>
+                        <div class="row">
+                            <!-- Working History -->
+                            <div class="working-history col-md-6 padding_15 padbot_30">
+                                <ul class="timeline col-md-12 top_30">
+                                    <li><i class="fa fa-suitcase" aria-hidden="true"></i><h2 class="timeline-title">HISTÓRICO DE TRABALHO</h2></li>
+                                    <!-- a work -->
+                                    {% for i in pessoa %}
+                                        <li><h3 class="line-title">{{ i.historico.empresa }} - {{ i.historico.cargo }}</h3>
+                                            <span>{{ i.historico.anoInicial }} - {{ i.historico.anoFim }}</span>
+                                            <p class="little-text">{{ i.historico.descricao }}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <!-- Education History -->
+                            <div class="education-history col-md-6 padding_15 padbot_30">
+                                <ul class="timeline col-md-12 top_30">
+                                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i><h2 class="timeline-title">HISTÓRICO DE EDUCAÇÃO</h2></li>
+                                    <!-- a work -->
+                                    {% for i in pessoa %}
+                                        <li><h3 class="line-title">{{ i.curso.instituicao }}</h3>
+                                            <span>{{ i.curso.anoInicial}} - {{ i.curso.anoFim }}</span>
+                                            <p class="little-text">{{ i.curso.descricao }}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        <hr>
+                            <div class="education-history col-md-6 padding_15 padbot_30">
+                                <ul class="timeline col-md-12 top_30">
+                                    <li><i class="fa fa-bar-chart" aria-hidden="true"></i><h2 class="timeline-title">HISTÓRICO DE ESTÁGIO</h2></li>
+                                    <!-- a work -->
+                                    {% for i in pessoa %}
+                                        <li><h3 class="line-title">{{ i.estagio.empresa }}</h3>
+                                            <span>{{ i.estagio.anoInicial}} - {{ i.estagio.anoFim }}</span>
+                                            <p class="little-text">{{ i.estagio.descricao }}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="education-history col-md-6 padding_15 padbot_30">
+                                <ul class="timeline col-md-12 top_30">
+                                    <li><i class="fa fa-book" aria-hidden="true"></i><h2 class="timeline-title">HISTÓRICOS DE CURSO</h2></li>
+                                    <!-- a work -->
+                                    {% for i in pessoa %}
+                                        <li><h3 class="line-title">{{ i.curso_tec.instituicao }}</h3>
+                                            <span>{{ i.curso_tec.ano}} - {{ i.curso_tec.carga_horaria }}</span>
+                                            <p class="little-text">{{ i.curso_tec.descricao }}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- Portfolio Page
+            ================================================== -->
+            <div id="portfolio" class="row bottom_45">
+                <section class="col-md-12">
+                    <div class="col-md-12 content-header bottom_15">
+                        <div class="section-title top_30 bottom_30"><span></span><h2>PORTFOLIO</h2></div>
+                        <div id="filters-container">
+                            <!-- '*' means shows all item elements -->
+                        </div>
+                    </div>
+                    <div id="grid-container" class="top_60">
+                        <!-- a image work -->
+                        {% for i in portifolio %}
+                        <div class="cbp-item cbp-lightbox photography">
+                                <a href="{{ MEDIA_URL }}{{ i.imagens.url }}" class="cbp-lightbox">
+                                    <figure>
+                                        <div class="icon">
+                                            <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                        </div>
+                                        <img src="{{ MEDIA_URL }}{{ i.imagens.url }}" alt="">
+                                        <figcaption>
+                                            <span class="title">{{ i.titulo }}</span><br/>
+                                            <span class="info">{{ i.texto }}</span>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+
+            <!-- Blog Page
+            ================================================== -->
+            <div id="blog">
+                <div class="row">
+                    <section class="blog col-md-12 bottom_30">
+                        <div class="col-md-12 content-header">
+                            <div class="section-title top_30 bottom_15"><span></span><h2>BLOG</h2></div>
+                        </div>
+                            <div id="grid-blog" class="row">
+                                <!-- a blog -->
+                                {% for i in post %}
+                                <div class="cbp-item">
+                                    <a href="{% url 'blog' i.id %}" class="blog-box">
+                                        <div class="blog-img">
+                                            <img src="{{ MEDIA_URL }}{{ i.imagens.url }}" alt="">
+                                        </div>
+                                        <div class="blog-box-info">
+                                            <br>
+                                            <h2 class="title">{{ i.titulo }}</h2>
+                                            <p class="little-text">{{ i.titulo }}</p>
+                                            <span class="date">{{ i.data }}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                        </div>
+                        <!-- load more button -->
+                    </section>
+                </div>
+            </div>
+            <!-- Contact Page
+            ================================================== -->
+            <div id="contact">
+                <div class="row">
+                    <!-- Contact Form -->
+                    <section class="contact-form col-md-6 padding_30 padbot_45">
+                        <div class="section-title top_15 bottom_30"><span></span><h2>CONTATO</h2></div>
+                        <form class="site-form" method="post" >
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input name="subject" class="site-input" placeholder="Nome">
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="from_email" class="site-input" placeholder="E-mail">
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea name="message" class="site-area" placeholder="Mensagem"></textarea>
+                                </div>
+                                <div class="col-md-12 top_15 bottom_30">
+                                    <button class="site-btn" type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                    <!-- Contact Informations -->
+                    <section class="contact-info col-md-6 padding_30 padbot_45">
+                        <div class="section-title top_15 bottom_30"><span></span><h2>INFORMAÇÕES DE CONTATO</h2></div>
+                        <ul>
+                            {% for i in pessoa %}
+                                <li><span>Endereço:</span> {{ i.endereco.rua }} 92 - {{ i.endereco.cidade }} {{ i.endereco.estado }}</li>
+                                <li><span>Telefone:</span> {{ i.telefone }}</li>
+                                <li><span>Ocupação:</span> {{ i.servico }}</li>
+                                <li><span>E-mail:</span> {{ i.email }}</li>
+                            {% endfor %}
+                            {% for i in pessoa %}
+                            <li>
+                                <div class="social-icons top_15">
+                                    <a class="fb" href="{{ i.facebook }}" target="_blank" ><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a class="ins" href="{{ i.instagran }}" target="_blank" ><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a class="linkdin" href="{{ i.linkdin }}" target="_blank" ><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                    <!-- Contact Map -->
+                    <section class="contact-map col-md-12 top_15 bottom_15">
+                        <div class="section-title bottom_30"><span></span><h2>LOCALIZAÇÃO</h2></div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.2023040303816!2d-67.79605618479921!3d-10.00014149285103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x917f8d6e9d43117f%3A0x707fb060c8462f23!2sTv.%20Nascimento%2C%2092%20-%20Recantos%20dos%20Buritis%2C%20Rio%20Branco%20-%20AC%2C%2069914-220!5e0!3m2!1spt-BR!2sbr!4v1577738041079!5m2!1spt-BR!2sbr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

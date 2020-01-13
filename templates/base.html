@@ -1,0 +1,145 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+
+<!-- Simple Page Needs
+================================================== -->
+<title>{% block titulo %}{% endblock %}</title>
+<meta charset="UTF-8">
+<meta name="description" content="Mat - Resume & vCard HTML Template">
+<meta name="keywords" content="personal, vcard, portfolio">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon
+================================================== -->
+<link href="{% static 'favicon/favicon.ico'  %}" rel="shortcut icon" type="image/x-icon" />
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/reset.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/green.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/cubeportfolio.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/owl.theme.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+<!--<link rel="stylesheet" href="{% static 'css/yellow.css' %}" id="color"/>-->
+
+<!-- Google Web fonts
+================================================== -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
+<!-- Font Icons
+================================================== -->
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
+<link rel="icon" href="{% static 'file_credencial/favicon/favicon.png' %}">
+
+
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+</head>
+<body>
+ <!-- Preloading -->
+<div id="preloader">
+    <div class="spinner">
+    </div>
+</div>
+
+<!-- Wrapper -->
+<div class="wrapper top_60 container">
+<div class="row">
+
+<!-- Profile Section
+================================================== -->
+<div class="col-lg-3 col-md-4">
+    <div class="profile">
+        <div class="profile-name">
+            {% for i in pessoa %}
+                <span class="name">{{ i.apelido }}</span><br>
+                <span class="job">{{ i.profissao }}</span>
+            {% endfor %}
+        </div>
+        <figure class="profile-image">
+            <img src="{% static 'images/perfil.jpg' %}" alt="">
+        </figure>
+        <ul class="profile-information">
+            {% for i in pessoa %}
+                <li></li>
+                <li><p style="font-size: 13px"><span style="font-size: 15px">Nome:</span> {{ i.apelido }}</p></li>
+                <li><p style="font-size: 13px"><span style="font-size: 15px">Nascimento:</span> {{ i.dataNascimento }}</p></li>
+                <li><p style="font-size: 13px"><span style="font-size: 15px">Profissão:</span> {{ i.profissao }}</p></li>
+                <!--<li><p style="font-size: 13px"><span style="font-size: 15px">Email:</span>{{ i.email }}</p></li>
+                <li><p style="font-size: 13px"><span style="font-size: 15px">LinkDin:</span>matheus-bertoldo</p></li>-->
+            {% endfor %}
+        </ul><br>
+        <div class="col-md-12">
+            <button class="site-btn icon"><a href="{% static 'curriculo_mb.pdf' %}" target="_blank">Download Cv</a><i class="fa fa-download" aria-hidden="true"></i></button>
+            <!--<a href="{% static 'curriculo_mb.pdf' %}" target="_blank" class="site-btn icon">Download Cv<i class="fa fa-download" aria-hidden="true"></i>link</a>-->
+        </div>
+    </div>
+</div>
+
+<!-- Page Tab Container Div -->
+<div id="ajax-tab-container" class="col-lg-9 col-md-8 tab-container">
+
+<!-- Header
+================================================== -->
+<div class="row">
+    <header class="col-md-12">
+        <nav>
+            <div class="row">
+                <!-- navigation bar -->
+                <div class="col-md-8 col-sm-8 col-xs-4">
+                    <ul class="tabs">
+                        <li class="tab">
+                            <a class="home-btn" href="#home"><i class="fa fa-home" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="tab"><a href="#resume">RESUMO</a></li>
+                        <li class="tab"><a href="#portfolio">PORTFOLIO</a></li>
+                        <li class="tab"><a href="#blog">BLOG</a></li>
+                        <li class="tab"><a href="#contact">CONTATO</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+{% block conteudo %}
+{% endblock %}
+
+</div><!-- row end -->
+<!-- Footer
+================================================== -->
+<footer>
+    <div class="footer col-md-12 top_30 bottom_30">
+        <div class="name col-md-4 hidden-md hidden-sm hidden-xs">Henry Rooney.</div>
+        <div class="copyright col-lg-8 col-md-12">© 2017 All rights reserved. Designed by <a href="https://themeforest.net/user/tavonline">tavonline</a> </div>
+    </div>
+</footer>
+
+</div> <!-- Tab Container - End -->
+</div> <!-- Row - End -->
+</div> <!-- Wrapper - End -->
+
+<!-- Javascripts
+================================================== -->
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/jquery.cubeportfolio.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easytabs.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<!-- for color alternatives -->
+<script src="{% static 'js/jquery.cookie-1.4.1.min.js' %}"></script>
+<script src="{% static 'js/Demo.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/Demo.min.css' %}" />
+
+
+</body>
+</html>
