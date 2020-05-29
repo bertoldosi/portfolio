@@ -56,9 +56,12 @@ $(document).ready(function () {
         '<a href="#" class="settings">' +
         '<i class="fa fa-cog fa-spin"></i>' +
         '</a>' +
-        '<h6>Acesso</h6>' +
-        '<h5></h5>' +
-        '<a href="index.html#login" class="reset btn btn-sm btn-info p-l-30 p-r-30">Login</a>' +
+        '<h6>Acesso</h6><hr>' +
+        '<a href="#resume" style="text-align: center">Resumo</a><br>' +
+        '<a href="#portfolio" style="text-align: center">Portfolio</a><br>' +
+        '<a href="#blog" style="text-align: center">Blog</a><br>' +
+        '<a href="#contact" style="text-align: center">Contato</a><hr>' +
+        '<a href="#login" class="reset btn btn-sm btn-info p-l-30 p-r-30">Login</a>' +
         '</div>';
     $('body').append(html);
 });
