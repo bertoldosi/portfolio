@@ -3,4 +3,4 @@
 
 ## Deploy
 
-O sistema pode ser acessado no seguinte link: https://matheus-bertoldo.herokuapp.com/
+Meu primeiro portfólio desenvolvido em Pytho+Django.
